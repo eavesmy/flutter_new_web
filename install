@@ -15,16 +15,25 @@ create(){
 init(){
 	git clone https://github.com/eavesmy/flutter_new_web.git
 	p="flutter_new_web"
-	mkdir ~/.flutter_packages
-	mv $p/package/* ~/.flutter_packages/
+	mkdir $HOME/.flutter_packages
+	mv $p/package/* $HOME/.flutter_packages/
 
 	mv $p/project ./hello_world
+
+	echo "
+dependency_overrides:
+  flutter_web:
+    path: "~/.flutter_packages/flutter_web"
+  flutter_web_ui:
+    path: "~/.flutter_packages/flutter_web_ui"
+	" >> ./hello_world/pubspec.yaml
+	
 
 	if [ -n "$1" ];
 	then
 		mv ./hello_world $1
 	fi
-	
+
 	rm -rf $p
 	mv ./install
 
