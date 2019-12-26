@@ -23,9 +23,9 @@ init(){
 	echo "
 dependency_overrides:
   flutter_web:
-    path: "~/.flutter_packages/flutter_web"
+    path: "$HOME/.flutter_packages/flutter_web"
   flutter_web_ui:
-    path: "~/.flutter_packages/flutter_web_ui"
+    path: "$HOME/.flutter_packages/flutter_web_ui"
 	" >> ./hello_world/pubspec.yaml
 	
 
