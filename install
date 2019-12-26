@@ -31,5 +31,3 @@ fi
 rm -rf $p
 
 echo "Init done."
-
-rm "$0"
