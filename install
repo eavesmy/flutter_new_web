@@ -1,0 +1,40 @@
+#!/bin/bash
+
+create(){
+	pname=`$1`
+	
+	if [ -z "$pname"  ];
+	then
+		echo "Please use ./install [project name] command."
+		exit 1
+	fi
+
+	init
+}
+
+init(){
+	git clone https://github.com/eavesmy/flutter_new_web.git
+	p="flutter_new_web"
+	mkdir ~/.flutter_packages
+	mv $p/* ~/.flutter_packages/
+
+	mv $p/project ./hello_world
+
+	if [ -n "$1" ];
+	then
+		mv ./hello_world $1
+	fi
+	
+	rm -rf $p
+	mv ./install
+
+	echo "Init done."
+}
+
+if [ -z "$1" ];
+then
+	init 
+	exit 1
+fi
+
+$1
