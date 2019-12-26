@@ -1,49 +1,34 @@
 #!/bin/bash
 
-create(){
-	pname=`$1`
-	
-	if [ -z "$pname"  ];
-	then
-		echo "Please use ./install [project name] command."
-		exit 1
-	fi
+git clone https://github.com/eavesmy/flutter_new_web.git
+p="flutter_new_web"
 
-	init
-}
+if [ ! -d "$HOME/.flutter_web_packages" ];
+then
+	mkdir $HOME/.flutter_web_packages
+fi
+rm -rf $HOME/.flutter_web_packages/flutter_web
+rm -rf $HOME/.flutter_web_packages/flutter_web_test
+rm -rf $HOME/.flutter_web_packages/flutter_web_ui
 
-init(){
-	git clone https://github.com/eavesmy/flutter_new_web.git
-	p="flutter_new_web"
-	mkdir $HOME/.flutter_packages
-	mv $p/package/* $HOME/.flutter_packages/
+mv $p/package/* $HOME/.flutter_web_packages/
 
-	mv $p/project ./hello_world
+mv $p/project ./hello_world
 
-	echo "
+echo "
 dependency_overrides:
   flutter_web:
-    path: "$HOME/.flutter_packages/flutter_web"
+    path: "$HOME/.flutter_web_packages/flutter_web"
   flutter_web_ui:
-    path: "$HOME/.flutter_packages/flutter_web_ui"
-	" >> ./hello_world/pubspec.yaml
+    path: "$HOME/.flutter_web_packages/flutter_web_ui"" >> ./hello_world/pubspec.yaml
 	
 
-	if [ -n "$1" ];
-	then
-		mv ./hello_world $1
-	fi
-
-	rm -rf $p
-	mv ./install
-
-	echo "Init done."
-}
-
-if [ -z "$1" ];
+if [ -n "$1" ];
 then
-	init 
-	exit 1
+	mv ./hello_world $1
 fi
 
-$1 $2
+rm -rf $p
+mv ./install
+
+echo "Init done."
