@@ -16,7 +16,7 @@ init(){
 	git clone https://github.com/eavesmy/flutter_new_web.git
 	p="flutter_new_web"
 	mkdir ~/.flutter_packages
-	mv $p/* ~/.flutter_packages/
+	mv $p/package/* ~/.flutter_packages/
 
 	mv $p/project ./hello_world
 
@@ -37,4 +37,4 @@ then
 	exit 1
 fi
 
-$1
+$1 $2

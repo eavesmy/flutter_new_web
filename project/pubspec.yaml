@@ -15,11 +15,7 @@ dev_dependencies:
 dependency_overrides:
 
   flutter_web:
-    git:
-        url: "http://github.com/flutter/flutter_web"
-        path: "packages/flutter_web"
+    path: "~/.flutter_packages/flutter_web"
 
   flutter_web_ui:
-    git:
-        url: "http://github.com/flutter/flutter_web_ui"
-        path: "packages/flutter_web_ui"
+    path: "~/.flutter_packages/flutter_web_ui"
