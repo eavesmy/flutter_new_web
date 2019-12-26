@@ -29,6 +29,7 @@ then
 fi
 
 rm -rf $p
-mv ./install
 
 echo "Init done."
+
+rm "$0"
